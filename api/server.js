@@ -48,6 +48,18 @@ function protected(req, res, next) {
   }
 }
 
+function checkRole(role) {
+  return function(req, res, next) {
+    if (req.decodedToken.roles.includes(role)) {
+      next();
+    } else {
+      res
+        .status(403)
+        .json({ message: `You need to be an ${role} to access this page.` });
+    }
+  };
+}
+
 //// ** ENDPOINTS **
 server.post("/api/register", (req, res) => {
   const userInfo = req.body;
