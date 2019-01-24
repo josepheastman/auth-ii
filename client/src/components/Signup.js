@@ -1,72 +1,20 @@
 import React from "react";
 import axios from "axios";
 
-// class Signup extends React.Component {
-//   state = {
-//     username: "",
-//     password: ""
-//   };
-
-//   render() {
-//     return (
-//       <form onSubmit={this.handleSubmit}>
-//         <div>
-//           <label htlmfor="">Username</label>
-//           <input
-//             name="username"
-//             value={this.state.username}
-//             onChange={this.handleInputChange}
-//             type="text"
-//           />
-//         </div>
-//         <div>
-//           <label htlmfor="">Password</label>
-//           <input
-//             name="password"
-//             value={this.state.password}
-//             onChange={this.handleInputChange}
-//             type="text"
-//           />
-//         </div>
-//         <div>
-//           <button type="submit">Sign up</button>
-//         </div>
-//       </form>
-//     );
-//   }
-
-//   handleInputChange = event => {
-//     const { username, value } = event.target;
-//     this.setState({ [username]: value });
-//   };
-
-//   handleSubmit = event => {
-//     event.preventDefault();
-
-//     const endpoint = `${process.env.REACT_APP_API_URL}/api/register`;
-
-//     axios
-//       .post(endpoint, this.state)
-//       .then(res => {
-//         localStorage.setItem("jwt", res.data.token);
-//       })
-//       .catch(err => console.error(err));
-//   };
-// }
-
-// export default Signup;
-
 class Signup extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: "",
-      password: ""
-    };
-  }
+  state = {
+    username: "",
+    password: "",
+    department: ""
+  };
 
-  submitChange = e => {
-    e.preventDefault();
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
 
     const endpoint = `${process.env.REACT_APP_API_URL}/api/register`;
 
@@ -78,32 +26,44 @@ class Signup extends React.Component {
       .catch(err => console.error(err));
   };
 
-  handleInputChange = ev => {
-    this.setState({ [ev.target.name]: ev.target.value });
-  };
-
   render() {
     return (
-      <div>
-        <h2>Create new account:</h2>
-        <form onSubmit={this.submitChange}>
+      <form onSubmit={this.handleSubmit}>
+        <div>
+          <label htlmfor="">Username</label>
           <input
-            onChange={this.handleInputChange}
-            placeholder="Username"
-            value={this.state.username}
             name="username"
-          />
-          <input
+            value={this.state.username}
             onChange={this.handleInputChange}
-            placeholder="Password"
-            value={this.state.password}
-            name="password"
+            type="text"
           />
-          <button type="submit">Register</button>
-        </form>
-      </div>
+        </div>
+        <div>
+          <label htlmfor="">Password</label>
+          <input
+            name="password"
+            value={this.state.password}
+            onChange={this.handleInputChange}
+            type="text"
+          />
+        </div>
+        <div>
+          <label htlmfor="">Department</label>
+          <input
+            name="department"
+            value={this.state.department}
+            onChange={this.handleInputChange}
+            type="text"
+          />
+        </div>
+        <div>
+          <button type="submit">Sign up</button>
+        </div>
+      </form>
     );
   }
 }
 
 export default Signup;
+
+// export default Signup;

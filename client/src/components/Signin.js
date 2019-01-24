@@ -8,6 +8,27 @@ class Signin extends React.Component {
     password: "pass"
   };
 
+  handleInputChange = ev => {
+    const { username, value } = ev.target;
+    this.setState({ [username]: value });
+  };
+
+  handleSubmit = ev => {
+    ev.preventDefault();
+
+    const endpoint = `${process.env.REACT_APP_API_URL}/api/login`;
+
+    axios
+      .post(endpoint, this.state)
+      .then(res => {
+        localStorage.setItem("jwt", res.data.token);
+        window.location.reload(true);
+      })
+      .catch(err => console.error(err));
+
+    this.props.history.push("/users");
+  };
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -37,27 +58,6 @@ class Signin extends React.Component {
       </form>
     );
   }
-
-  handleInputChange = ev => {
-    const { username, value } = ev.target;
-    this.setState({ [username]: value });
-  };
-
-  handleSubmit = ev => {
-    ev.preventDefault();
-
-    const endpoint = `${process.env.REACT_APP_API_URL}/api/login`;
-
-    axios
-      .post(endpoint, this.state)
-      .then(res => {
-        localStorage.setItem("jwt", res.data.token);
-        window.location.reload(true);
-      })
-      .catch(err => console.error(err));
-
-    this.props.history.push("/users");
-  };
 }
 
 export default Signin;

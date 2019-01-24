@@ -1,33 +1,52 @@
 import React, { Component } from "react";
 import { Route, NavLink } from "react-router-dom";
 import "./App.css";
+import styled from "styled-components";
 
 import Signup from "./components/Signup.js";
 import Signin from "./components/Signin.js";
 import Users from "./components/Users.js";
 
+const StyledApp = styled.div`
+  margin-left: 700px;
+  margin-top: 80px;
+  width: 500px;
+  height: 300px;
+  //   border: 5px solid #f6c193;
+  border: 5px solid #6e8dc1;
+  //   background-color: #81f0e1;
+  background-color: #aec6f0;
+`;
+
+const StyledDiv = styled.div`
+  margin-top: 50px;
+  margin-left: 130px;
+`;
+
 class App extends Component {
   render() {
     return (
-      <>
-        <header>
-          <nav>
-            <NavLink to="/signup">Sign up</NavLink>
-            <NavLink to="/signin">Sign in</NavLink>
-            &nbsp;|&nbsp;
-            <NavLink to="/users">Users</NavLink>
-            {/* <button onClick={this.signout}>Sign out</button> */}
-            <button onClick={this.signout}>
-              <NavLink to="/signin">Sign out</NavLink>
-            </button>
-          </nav>
-        </header>
-        <main>
-          <Route path="/signup" component={Signup} />
-          <Route path="/signin" component={Signin} />
-          <Route path="/users" component={Users} />
-        </main>
-      </>
+      <StyledApp>
+        <StyledDiv>
+          <header>
+            <nav>
+              <NavLink to="/signup">Sign up</NavLink>
+              <NavLink to="/signin">Sign in</NavLink>
+              &nbsp;|&nbsp;
+              <NavLink to="/users">Users</NavLink>
+              {/* <button onClick={this.signout}>Sign out</button> */}
+              <button onClick={this.signout}>
+                <NavLink to="/signin">Sign out</NavLink>
+              </button>
+            </nav>
+          </header>
+          <main>
+            <Route path="/signup" component={Signup} />
+            <Route path="/signin" component={Signin} />
+            <Route path="/users" component={Users} />
+          </main>
+        </StyledDiv>
+      </StyledApp>
     );
   }
 
