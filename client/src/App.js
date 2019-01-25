@@ -30,13 +30,52 @@ class App extends Component {
         <StyledDiv>
           <header>
             <nav>
-              <NavLink to="/signup">Sign up</NavLink>
-              <NavLink to="/signin">Sign in</NavLink>
+              <NavLink
+                to="/signup"
+                style={{
+                  fontWeight: "bold",
+                  color: "black",
+                  textDecoration: "none",
+                  marginRight: "20px"
+                }}
+              >
+                Sign up
+              </NavLink>
+              <NavLink
+                to="/signin"
+                style={{
+                  fontWeight: "bold",
+                  color: "black",
+                  textDecoration: "none"
+                }}
+              >
+                Sign in
+              </NavLink>
               &nbsp;|&nbsp;
-              <NavLink to="/users">Users</NavLink>
+              <NavLink
+                to="/users"
+                style={{
+                  fontWeight: "bold",
+                  color: "black",
+                  textDecoration: "none",
+                  marginRight: "20px"
+                }}
+              >
+                Users
+              </NavLink>
               {/* <button onClick={this.signout}>Sign out</button> */}
               <button onClick={this.signout}>
-                <NavLink to="/signin">Sign out</NavLink>
+                <NavLink
+                  to="/signin"
+                  style={{
+                    fontWeight: "bold",
+                    color: "black",
+                    textDecoration: "none"
+                    // marginRight: "20px"
+                  }}
+                >
+                  Sign out
+                </NavLink>
               </button>
             </nav>
           </header>

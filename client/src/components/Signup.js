@@ -22,8 +22,11 @@ class Signup extends React.Component {
       .post(endpoint, this.state)
       .then(res => {
         localStorage.setItem("jwt", res.data.token);
+        // window.location.reload(true);
       })
       .catch(err => console.error(err));
+
+    this.props.history.push("/signin");
   };
 
   render() {

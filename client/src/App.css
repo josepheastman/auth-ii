@@ -22,9 +22,24 @@
   color: #61dafb;
 }
 
+label {
+  margin-top: 10px;
+  display: inline-block;
+  float: left;
+  clear: left;
+  width: 250px;
+  text-align: right;
+}
+
 input {
   margin-top: 10px;
   margin-left: 10px;
+
+  /* display: inline-block; */
+  /* float: left; */
+  clear: left;
+  width: 250px;
+  text-align: right;
 }
 
 button {
